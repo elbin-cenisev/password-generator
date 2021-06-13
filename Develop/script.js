@@ -12,8 +12,7 @@ function writePassword() {
 function generatePassword() {
   var pwLength = getLength();                             // holds password length
   var characterPool = getCharacterPool();                 // holds all allowed characters
-  console.log(characterPool);
-  var generatedPassword = pickCharacters(characterPool);  // holds random collection of allowed characters
+  var generatedPassword = pickCharacters(pwLength, characterPool);  // holds random collection of allowed characters
 
   return generatedPassword;
 
@@ -70,8 +69,16 @@ function getCharacterPool() {
 }
 
 // Picks characters from pool of allowed characters
-function pickCharacters(pool) {
-  return null;
+function pickCharacters(length, pool) {
+  var randomSelection = "";
+
+  for(var i = 0; i < length; i++) {
+    var randChar = Math.floor(Math.random() * pool.length);
+    randomSelection += pool.substring(randChar, randChar+1);
+    console.log(randomSelection);
+  }
+
+  return randomSelection;
 }
 
 // Add event listener to generate button
